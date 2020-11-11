@@ -8,7 +8,8 @@ const ctx = canvas.getContext('2d'); // canvas context
 let lastLoopTimestamp = new Date(); // time of last loop
 let currentLoopTimestamp;
 let fps; // fps
-let count = 100; // number of balls to initialize for use in our demo
+let countMultiplier = 5; // number of balls to initialize for use in our demo
+let count = 10 * countMultiplier; // number of balls to initialize for use in our demo
 let gravity = 0.5; // global gravity effect
 let bounce = 0.7; // bounce effect
 const balls = []; // here, hold these
@@ -39,14 +40,22 @@ const drawText = (ctx) => {
 
 const init = (balls, count) => {
   for (let i = 0; i < count; i++) {
-    const tmpVx = Math.floor(Math.random() * ([-1, 1][Math.random() * 2 | 0] * 10));
-    const tmpVy = Math.floor(Math.random() * 15) + 5;
-    const radius = Math.floor(Math.random() * 15) + 5;
-    const tmpX = Math.floor(Math.random() * canvas.width - radius) + radius;
-    const tmpY = Math.floor(Math.random() * canvas.height - radius) + radius;
-    const color = '#' + Math.floor(Math.random() * 16777215).toString(16);
+    const radius = Math.floor(Math.random() * 25) + 20;
+    const startVx = Math.floor(Math.random() * ([-1, 1][Math.random() * 2 | 0] * 15));
+    const startVy = Math.floor(Math.random() * 25) - 10;
 
-    balls[i] = new Ball(canvas, ctx, radius, tmpX, tmpY, tmpVx, tmpVy, color, gravity, bounce);
+    const startX = Math.floor(Math.random() * canvas.width - radius);
+    const startY = Math.floor(Math.random() * (canvas.height / 4) - radius) + radius;
+
+    const red = Math.floor(Math.random() * 255);
+    const blue = Math.floor(Math.random() * 255);
+    const green = Math.floor(Math.random() * 255);
+
+    const color = `rgba(${red}, ${green}, ${blue}, 0.975)`;
+
+    balls[i] = new Ball(
+      canvas, ctx, radius, startX, startY, startVx, startVy, color, gravity, bounce
+    );
   }
 };
 
@@ -56,7 +65,13 @@ const draw = (ctx, balls) =>{
 
   ctx.clearRect(0,0,canvas.width,canvas.height);	//Clear last frame
 
-  ctx.fillStyle = '#111';
+  const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height * 2);
+
+  gradient.addColorStop(0, '#222222');
+  gradient.addColorStop(1, '#000000');
+  ctx.fillStyle = gradient;
+
+  // ctx.fillStyle = '#111';
   ctx.fillRect(0,0,canvas.width,canvas.height);	// Background
 
   drawText(ctx);
@@ -101,55 +116,55 @@ window.addEventListener('keydown', (e) => {
       break;
 
     case 'Digit1':
-      count = 100;
+      count = 10 * countMultiplier;
       balls.length = 0;
       init(balls, count);
       break;
 
     case 'Digit2':
-      count = 200;
+      count = 20 * countMultiplier;
       balls.length = 0;
       init(balls, count);
       break;
 
     case 'Digit3':
-      count = 300;
+      count = 30 * countMultiplier;
       balls.length = 0;
       init(balls, count);
       break;
 
     case 'Digit4':
-      count = 400;
+      count = 40 * countMultiplier;
       balls.length = 0;
       init(balls, count);
       break;
 
     case 'Digit5':
-      count = 500;
+      count = 50 * countMultiplier;
       balls.length = 0;
       init(balls, count);
       break;
 
     case 'Digit6':
-      count = 600;
+      count = 60 * countMultiplier;
       balls.length = 0;
       init(balls, count);
       break;
 
     case 'Digit7':
-      count = 700;
+      count = 70 * countMultiplier;
       balls.length = 0;
       init(balls, count);
       break;
 
     case 'Digit8':
-      count = 800;
+      count = 80 * countMultiplier;
       balls.length = 0;
       init(balls, count);
       break;
 
     case 'Digit9':
-      count = 900;
+      count = 90 * countMultiplier;
       balls.length = 0;
       init(balls, count);
       break;
