@@ -6,7 +6,8 @@
   "author": "Michael Hamilton <michaelhamilton626@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "parcel gravity.html"
+    "dev": "parcel gravity.html",
+    "build": "parcel build gravity.html"
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.4",

@@ -3,6 +3,7 @@ A simple HTML canvas experiment implementing gravity.
 
 ## Setup
 Run `npm i` to install dependencies, then run `npm run dev` to start a development server (likely at http://localhost:1234).
+Alternatively, `npm build` will bundle everything into `/dist`.
 
 ## Usage
 * Up/Down arrows change the effect of gravity
