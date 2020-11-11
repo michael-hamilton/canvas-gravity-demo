@@ -1,4 +1,4 @@
-# Canvas Gravity Demo
+# [Canvas Gravity Demo](http://miska.me/projects/canvas-gravity-demo/gravity.html)
 A simple HTML canvas experiment implementing gravity.
 
 ## Setup
